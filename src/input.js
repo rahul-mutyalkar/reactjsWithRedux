@@ -9,21 +9,15 @@ class Input extends React.Component {
   constructor(props) {
     super(props);
     this.store = configureStore();
-    this.delayedText = _.debounce(this.findUser.bind(this), 250);
+    this.delayedText = _.debounce(this.findUser.bind(this), 500);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleChange = (e) => {
-    console.log('e : ', e.target.value)
     const text = e.target.value;
-
     this.props.changeSearchString(text);
     if (text.length > 0) {
       this.delayedText(text)
-    }
-    else {
-      console.log('appData.data')
-      // this.props.appData.data = null;
     }
   }
 
@@ -33,7 +27,7 @@ class Input extends React.Component {
       ? this.props.appData.searchText
       : '';
     const userExist = _.find(this.props.appData.userArray, user => user.login.toLowerCase() === text.toLowerCase());
-    console.log('userExist : ', userExist);
+    // console.log('userExist : ', userExist);
     if (userExist !== undefined) {
       this.props.appData.data = userExist;
     }
