@@ -12,7 +12,7 @@ class Input extends React.Component {
     this.delayedText = _.debounce(this.findUser.bind(this), 500);
     this.handleChange = this.handleChange.bind(this);
   }
-
+/* to handle keys entered */
   handleChange = (e) => {
     const text = e.target.value;
     this.props.changeSearchString(text);
@@ -21,6 +21,7 @@ class Input extends React.Component {
     }
   }
 
+/* to find the user */
   findUser() {
     // console.log('findUser() : ', this.props.appData);
     const text = this.props.appData.searchText.length > 0
@@ -35,6 +36,7 @@ class Input extends React.Component {
       this.props.fetchData(this.props.appData.searchText);
     }
   }
+  /* to render the JSX */
   render() {
     return (
       <div className="App">
